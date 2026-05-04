@@ -13,8 +13,8 @@ function fish_user_key_bindings
     bind --mode insert \ar history-pager
 end
 
-set -gx EDITOR nvim
-set -gx VISUAL nvim
+set -gx EDITOR vim
+set -gx VISUAL vim
 set -gx PAGER less
 
 # Add to path.
