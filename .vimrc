@@ -77,6 +77,43 @@ autocmd BufReadPost,BufNewFile *.env,*.env.* setfiletype dot
 " autocmd BufReadPost,BufNewFile * if &filetype !=# 'qf' && &fileencoding ==# '' | set fileencoding=utf-8 | endif
 autocmd FileType help wincmd L | vertical resize 80
 
+" Disable cursorline in diff editor, enable elsewhere.
+augroup CursorLine
+  autocmd!
+  autocmd OptionSet diff if &l:diff | setlocal nocursorline | else | setlocal cursorline | endif
+  autocmd BufWinEnter * if &l:diff | setlocal nocursorline | endif
+augroup END
+
+" Change diff highlights
+function! s:set_diff_highlights() abort
+  highlight DiffChange
+        \ guifg=NONE guibg=#373244 gui=NONE
+        \ ctermfg=NONE ctermbg=237 cterm=NONE
+  highlight DiffText
+        \ guifg=NONE guibg=#585044 gui=bold
+        \ ctermfg=NONE ctermbg=239 cterm=bold
+  highlight DiffAdd
+        \ guifg=NONE guibg=#294436 gui=NONE
+        \ ctermfg=NONE ctermbg=22 cterm=NONE
+  highlight DiffDelete
+        \ guifg=#f38ba8 guibg=#49303d gui=NONE
+        \ ctermfg=211 ctermbg=52 cterm=NONE
+  highlight GitGutterAdd
+        \ guifg=#a6e3a1 guibg=NONE gui=NONE
+        \ ctermfg=151 ctermbg=NONE cterm=NONE
+  highlight GitGutterChange
+        \ guifg=#f9e2af guibg=NONE gui=NONE
+        \ ctermfg=223 ctermbg=NONE cterm=NONE
+  highlight GitGutterDelete
+        \ guifg=#f38ba8 guibg=NONE gui=NONE
+        \ ctermfg=211 ctermbg=NONE cterm=NONE
+  highlight GitGutterChangeDelete
+        \ guifg=#fab387 guibg=NONE gui=NONE
+        \ ctermfg=216 ctermbg=NONE cterm=NONE
+endfunction
+
+autocmd ColorScheme * call s:set_diff_highlights()
+
 " [[ plugins ]]
 " install Plug if not installed and install all uninstalled plugins
 if empty(glob('~/.vim/autoload/plug.vim'))
