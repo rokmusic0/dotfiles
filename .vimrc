@@ -55,20 +55,26 @@ set autoread " update the buffer if file changed externally (for example in vs c
 
 " [[ keymaps ]]
 nnoremap <space> <nop>
-let mapleader = " "
-let maplocalleader = "\\"
+let g:mapleader = " "
+let g:maplocalleader = "\\"
+
 inoremap <A-Bs> <C-w>
 tnoremap <ESC> <C-\><C-n>
 vnoremap < <gv
 vnoremap > >gv
 vnoremap p "_dP 
 
+nnoremap <C-up> <C-w>k
+nnoremap <C-right> <C-w>l
+nnoremap <C-down> <C-w>j
+nnoremap <C-left> <C-w>h
+
 nnoremap <expr> <C-e> max([1, winheight(0) / 10]) . "\<C-e>"
 nnoremap <expr> <C-y> max([1, winheight(0) / 10]) . "\<C-y>"
 
 " [[ autocmds ]]
 autocmd BufReadPost,BufNewFile *.env,*.env.* setfiletype dot
-autocmd BufReadPost,BufNewFile * if &filetype !=# 'qf' && &fileencoding ==# '' | set fileencoding=utf-8 | endif
+" autocmd BufReadPost,BufNewFile * if &filetype !=# 'qf' && &fileencoding ==# '' | set fileencoding=utf-8 | endif
 autocmd FileType help wincmd L | vertical resize 80
 
 " [[ plugins ]]
@@ -108,6 +114,7 @@ nmap <leader>fh :Helptags<cr>
 nmap <leader>ff :Files<cr>
 nmap <leader>fc :Commands<cr>
 
+" Automatically copy yanked text from remote Linux Vim to local clipboard
 " Automatically copy yanked text from remote Linux Vim to local (macbook) clipboard
 " This uses the 'vim-oscyank' plugin to send yanked text over SSH via OSC 52.
 " Only enable this on Linux systems (e.g., remote servers)
