@@ -102,22 +102,27 @@ Plug 'tpope/vim-vinegar'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' } " colorscheme
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fzf
 Plug 'junegunn/fzf.vim' " fzf
-Plug 'unblevable/quick-scope' " f t F T visual
 Plug 'ojroques/vim-oscyank'
+Plug 'airblade/vim-gitgutter'
+Plug 'szw/vim-maximizer'
 
 call plug#end()
 
 " plugin configs
 silent! colorscheme catppuccin_mocha
 
-nmap <leader>fh :Helptags<cr>
-nmap <leader>ff :Files<cr>
-nmap <leader>fc :Commands<cr>
+
+nnoremap <leader>f<leader> :Fzf<CR>
+nnoremap <leader>fh :Helptags<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fc :Commands<CR>
+
+let g:maximizer_set_default_mapping = 1
+nnoremap <C-w>m :MaximizerToggle<CR>
 
 " Automatically copy yanked text from remote Linux Vim to local clipboard
-" Automatically copy yanked text from remote Linux Vim to local (macbook) clipboard
 " This uses the 'vim-oscyank' plugin to send yanked text over SSH via OSC 52.
-" Only enable this on Linux systems (e.g., remote servers)
+" Only enable this on Linux systems (e.g. remote servers)
 if has('unix') && system('uname -s') =~? 'linux'
   augroup OscYank
     " Clear any previous definitions in this group
