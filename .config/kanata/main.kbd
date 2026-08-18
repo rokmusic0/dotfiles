@@ -38,7 +38,7 @@
     n (chord combo_mombo n)
     e (tap-hold $tap-time $hold-time e rsft)
     i (tap-hold $tap-time $hold-time i rctl)
-    o (tap-hold $tap-time $hold-time o ralt)
+    o (tap-hold $tap-time $hold-time o lalt)
 )
 
 (defchords combo_mombo 30
@@ -56,7 +56,7 @@
     b[   (tap-hold $tap-time $hold-time S-9 rmet)
     b]   (tap-hold $tap-time $hold-time S-0 rsft)
     ?    (tap-hold $tap-time $hold-time S-/ rctl)
-    ;    (tap-hold $tap-time $hold-time ; ralt)
+    ;    (tap-hold $tap-time $hold-time ; lalt)
 
     > S-.
     ^ S-6
@@ -79,7 +79,7 @@
     left (tap-hold $tap-time $hold-time left  lctl)
     down (tap-hold $tap-time $hold-time down  lsft)
     rght (tap-hold $tap-time $hold-time right lmet)
-    .    (tap-hold $tap-time $hold-time .     rctl)
+    .    (tap-hold $tap-time $hold-time .     lalt)
 )
 
 (defalias ;; fn
@@ -90,7 +90,7 @@
     f4  (tap-hold $tap-time $hold-time f4  rmet)
     f5  (tap-hold $tap-time $hold-time f5  rsft)
     f6  (tap-hold $tap-time $hold-time f6  rctl)
-    f11 (tap-hold $tap-time $hold-time f11 ralt)
+    f11 (tap-hold $tap-time $hold-time f11 lalt)
 )
 
 (defalias ;; mouse
@@ -145,7 +145,7 @@
     ✗     ✗     ✗     ✗     ✗     ✗     ✗     ✗     ✗     ✗     ✗     ✗     ✗
     ✗     ✗     ✗     ✗     ✗     ✗     ✗     ✗     ✗     ✗     ✗     ✗     ✗     ✗
     ✗     ✗     pgdn  up    pgup  ✗     ✗     7     8     9     S-;   ✗     ✗
-    ✗     lctl  @left @down @rght ✗     -     @4    @5    @6    @.    ✗     ✗     ✗
+    ✗     lalt  @left @down @rght ✗     -     @4    @5    @6    @.    ✗     ✗     ✗
     ✗     ✗     left  down  right ✗     ✗     ✗     1     2     3     ,     ✗
     ✗     ✗     ✗     ✗                 ✗                 0     ✗
 )
