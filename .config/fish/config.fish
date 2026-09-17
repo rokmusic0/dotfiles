@@ -13,8 +13,8 @@ function fish_user_key_bindings
     bind --mode insert \ar history-pager
 end
 
-set -gx EDITOR vim
-set -gx VISUAL vim
+set -gx EDITOR nvim
+set -gx VISUAL nvim
 set -gx PAGER less
 
 # Add to path.
@@ -49,22 +49,20 @@ if test -x /opt/homebrew/bin/rsync
 end
 
 # abbreviations and aliases
-alias ls "eza -la --git --hyperlink --group-directories-first" # nice output with <A-l>
-
 source ~/.config/fish/abbr_git.fish
 source ~/.config/fish/abbr_docker.fish
 
+alias ls "eza -la --git --hyperlink --group-directories-first" # nice output with <A-l>
 abbr --add py python
 alias ipy "ipython --no-confirm-exit --no-banner --TerminalInteractiveShell.editing_mode=vi"
 abbr --add se "source .venv/bin/activate.fish"
-
 abbr --add llama 'llama-swap -config ~/.llama-swap.yaml'
-abbr --add oc "opencode"
 
 # kill on qwerty is euii on colemak
 # for the others to be able to use the computer if I am not there
-alias kbd "launchctl start com.rok.kanata"
-alias euii "kill (launchctl list | grep com.rok.kanata | awk '{print $1}')"
+alias alive "launchctl start com.rok.kanata"
+alias kanata "launchctl start com.rok.kanata"
+alias euii "launchctl list | grep com.rok.kanata | awk '{print \$1}' | xargs kill"
 
 # compliments of fish docs
 function multicd
@@ -85,10 +83,3 @@ if type -q direnv
     direnv hook fish | source
 end
 
-set -gx GPG_TTY (tty)
-gpg-agent --daemon &>/dev/null
-
-# claude code
-export ANTHROPIC_BASE_URL="http://localhost:4141"
-export ANTHROPIC_API_KEY="copilot-api"
-export ANTHROPIC_MODEL="claude-opus-4.5"
