@@ -1,5 +1,3 @@
--- These are plugin independent keymaps.
--- Plugin related keymaps are set in the config function when loading that plugin.
 vim.keymap.set("t", "<ESC>", "<C-\\><C-n>")
 vim.keymap.set("i", "<A-BS>", "<C-w>")
 vim.keymap.set("v", "<", "<gv")
