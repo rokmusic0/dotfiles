@@ -4,6 +4,9 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 -- clipboard
 vim.opt.clipboard = "unnamed,unnamedplus" -- sync with system clipboard (* and + registers)
+if vim.env.SSH_CONNECTION then -- sync remote server clipboard with the local clipboard
+	vim.g.clipboard = "osc52"
+end
 -- insert
 vim.opt.completeopt = "menuone,popup,noinsert"
 vim.opt.backspace = "indent,eol,nostop" -- intuitive backspace
