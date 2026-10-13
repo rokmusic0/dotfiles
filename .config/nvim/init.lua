@@ -13,6 +13,7 @@ vim.pack.add({
 	{ src = "https://github.com/tpope/vim-fugitive" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
 	-- { src = "https://github.com/lervag/vimtex" },
 })
 
@@ -40,3 +41,5 @@ vim.keymap.set("n", "<Leader><Leader>", "<Cmd>FzfLua combine pickers=git_files;l
 
 require("oil").setup()
 vim.keymap.set("n", "<Leader>e", "<Cmd>Oil<CR>")
+
+require("ibl").setup()
