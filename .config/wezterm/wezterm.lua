@@ -34,8 +34,8 @@ local keys = {
 	{ key = "LeftArrow", mods = "SHIFT|SUPER", action = wezterm.action.MoveTabRelative(-1) },
 	{ key = "RightArrow", mods = "SHIFT|SUPER", action = wezterm.action.MoveTabRelative(1) },
 	-- panes
-	{ key = "|", mods = "SUPER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	{ key = "-", mods = "SUPER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+	{ key = "|", mods = "SHIFT|SUPER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	{ key = "-", mods = "SHIFT|SUPER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	{ key = "LeftArrow", mods = "SUPER", action = wezterm.action.ActivatePaneDirection("Left") },
 	{ key = "RightArrow", mods = "SUPER", action = wezterm.action.ActivatePaneDirection("Right") },
 	{ key = "UpArrow", mods = "SUPER", action = wezterm.action.ActivatePaneDirection("Up") },
@@ -54,7 +54,7 @@ local keys = {
 	-- misc
 	{ key = "p", mods = "SHIFT|SUPER", action = wezterm.action.ActivateCommandPalette },
 	{ key = "f", mods = "SUPER|CTRL", action = wezterm.action.ToggleFullScreen },
-	{ key = "z", mods = "SUPER", action = wezterm.action.TogglePaneZoomState },
+	{ key = "m", mods = "SHIFT|SUPER", action = wezterm.action.TogglePaneZoomState },
 	{ key = "m", mods = "SUPER", action = wezterm.action.Hide },
 	-- proper key emulation
 	{ key = "b", mods = "ALT", action = wezterm.action({ SendString = "\x1bb" }) },
