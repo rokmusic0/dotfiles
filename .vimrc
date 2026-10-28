@@ -148,8 +148,7 @@ call plug#end()
 " plugin configs
 silent! colorscheme catppuccin_mocha
 
-
-nnoremap <leader>f<leader> :Fzf<CR>
+nnoremap <leader>fF :FZF<CR>
 nnoremap <leader>fh :Helptags<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fc :Commands<CR>
