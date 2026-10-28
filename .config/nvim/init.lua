@@ -53,7 +53,6 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/lukas-reineke/indent-blankline.nvim" },
 	{ src = "https://github.com/folke/flash.nvim.git" },
-	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/LudoPinelli/comment-box.nvim.git" },
 })
 
@@ -73,30 +72,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
 	end,
 })
 
-require("fzf-lua").setup({
-	autocmds = {
-		actions = {
-			["ctrl-x"] = {
-				fn = function(selected)
-					for _, entry in ipairs(selected) do
-						local fields = vim.split(entry, "│", { plain = true })
-
-						local event = vim.trim(fields[2] or "")
-						local group = vim.trim(fields[4] or "")
-
-						if event ~= "" and group ~= "" then
-							vim.api.nvim_clear_autocmds({
-								group = group,
-								event = event,
-							})
-						end
-					end
-				end,
-				reload = true,
-			},
-		},
-	},
-})
 vim.keymap.set("n", "<Leader>fF", "<Cmd>FzfLua<CR>")
 vim.keymap.set("n", "<Leader>ff", "<Cmd>FzfLua files<CR>")
 vim.keymap.set("n", "<Leader>fh", "<Cmd>FzfLua helptags<CR>")
@@ -114,17 +89,3 @@ vim.keymap.set({ "n", "x", "o" }, "S", function()
 end, { desc = "Flash Treesitter" })
 
 require("ibl").setup()
-
-require("conform").setup({
-	formatters_by_ft = {
-		lua = { "stylua" },
-		python = { "ruff" },
-	},
-})
-vim.api.nvim_create_autocmd("BufWritePre", {
-	group = vim.api.nvim_create_augroup("rok.plugins.conform.autoformat", { clear = false }),
-	pattern = "*",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
-	end,
-})
